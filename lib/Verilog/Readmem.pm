@@ -9,7 +9,7 @@ our @ISA        = qw(Exporter);
 our @EXPORT_OK  = qw(parse_readmem);
 our @EXPORT;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 sub bin2dec {
@@ -154,7 +154,7 @@ Verilog::Readmem - Parse Verilog $readmemh or $readmemb text file
 
 =head1 VERSION
 
-This document refers to Verilog::Readmem version 0.01.
+This document refers to Verilog::Readmem version 0.02.
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,8 @@
 Revision history for Perl module Verilog::Readmem
 
 
+0.02  Mar 07 2008
+      - change to tests to make more portable (CPAN-Tester-friendly)
+
 0.01  Mar 06 2008
       - original version of module 'Verilog::Readmem'

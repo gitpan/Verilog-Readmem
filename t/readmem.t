@@ -1,7 +1,7 @@
 
 use warnings;
 use strict;
-use Test::More tests => 29;
+use Test::More tests => 27;
 #use diagnostics;
 #use Data::Dumper;
 
@@ -9,7 +9,7 @@ use Test::More tests => 29;
 BEGIN { use_ok('Verilog::Readmem', qw(parse_readmem)) }
 
 # Check module version number
-BEGIN { use_ok('Verilog::Readmem', '0.01') }
+BEGIN { use_ok('Verilog::Readmem', '0.02') }
 
 
 my @aoa_expect;
@@ -145,14 +145,6 @@ is_deeply($ref_actual, \@aoa_expect, $file);
 
 
 # Check error messages
-
-$@ = '';
-eval { $ref_actual = parse_readmem({filename => 'foo.dat'}) };
-like($@, qr/No such file or directory/, 'die if non-existent file');
-
-$@ = '';
-eval { $ref_actual = parse_readmem({filename => ''}) };
-like($@, qr/No such file or directory/, 'die if undef file');
 
 $@ = '';
 eval { $ref_actual = parse_readmem() };
