@@ -9,7 +9,7 @@ our @ISA        = qw(Exporter);
 our @EXPORT_OK  = qw(parse_readmem);
 our @EXPORT;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 sub bin2dec {
@@ -138,6 +138,10 @@ sub remove_comments {
     # will remove the comments, but leave a single value: 123789.
     # But, ncverilog and vcs will replace the comment with a space,
     # leaving 2 values: 123 and 789.  This is the desired behavior.
+    # Wait... before we do that, we have to account for the other
+    # corner case of "//*": this is really a single-line comment,
+    # not a multi-line comment.
+    $lines =~ s{//\*}{// \*}g;
     $lines =~ s{/\*}{ /\*}g;
 
     # Use regex from perlfaq6 (C++ comments).
@@ -154,7 +158,7 @@ Verilog::Readmem - Parse Verilog $readmemh or $readmemb text file
 
 =head1 VERSION
 
-This document refers to Verilog::Readmem version 0.02.
+This document refers to Verilog::Readmem version 0.03.
 
 =head1 SYNOPSIS
 
@@ -163,15 +167,13 @@ This document refers to Verilog::Readmem version 0.02.
     # Read memory file into Array-Of-Arrays data structure:
     my $mem_ref = parse_readmem({filename => 'memory.hex'});
 
-    my @mem = @$mem_ref;
-
-    my $num_blocks = scalar @mem;
+    my $num_blocks = scalar @{$mem_ref};
     print "num_blocks = $num_blocks\n";
 
     # It is typical to have only one data block.
     # Sum up all data values.
     if ($num_blocks == 1) {
-        my ($addr, @data) = @{$mem[0]};
+        my ($addr, @data) = @{ $mem_ref->[0] };
         my $sum = 0;
         for (@data) { $sum += $_ }
         print "addr = $addr, data sum = $sum\n";

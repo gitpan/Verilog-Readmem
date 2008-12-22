@@ -15,13 +15,11 @@ my $mem_ref = parse_readmem(
                 }
 );
 
-my @mem = @$mem_ref;
-
-my $num_blocks = scalar @mem;
+my $num_blocks = scalar @{$mem_ref};
 print "num_blocks = $num_blocks\n";
 
-for my $i (0 .. $#mem) {
-    my ($addr, @data) = @{$mem[$i]};
+for my $i (0 .. ($num_blocks-1)) {
+    my ($addr, @data) = @{ $mem_ref->[$i] };
     print "\nblock = $i\n";
     print "addr = $addr\n";
     print "num_data = ", scalar @data, "\n";

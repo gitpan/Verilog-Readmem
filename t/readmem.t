@@ -9,7 +9,7 @@ use Test::More tests => 27;
 BEGIN { use_ok('Verilog::Readmem', qw(parse_readmem)) }
 
 # Check module version number
-BEGIN { use_ok('Verilog::Readmem', '0.02') }
+BEGIN { use_ok('Verilog::Readmem', '0.03') }
 
 
 my @aoa_expect;

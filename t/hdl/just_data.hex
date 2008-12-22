@@ -36,3 +36,6 @@
 ffff_ffff   // max 32-bit value
 
 1A2b_CdEf   // mixed upper/lower case
+
+//************ another common tricky comment
+

@@ -1,6 +1,9 @@
 Revision history for Perl module Verilog::Readmem
 
 
+0.03  Dec 22 2008
+      - fix bug for comment corner case //*
+
 0.02  Mar 07 2008
       - change to tests to make more portable (CPAN-Tester-friendly)
 
