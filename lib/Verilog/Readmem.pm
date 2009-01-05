@@ -9,7 +9,7 @@ our @ISA        = qw(Exporter);
 our @EXPORT_OK  = qw(parse_readmem);
 our @EXPORT;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 sub bin2dec {
@@ -24,24 +24,24 @@ sub parse_readmem {
 
     # Check inputs.
     if (exists $arg_ref->{filename}) {
-       $file = $arg_ref->{filename};
+        $file = $arg_ref->{filename};
     }
     else {
         croak "Error: filename is required.\n";
     }
 
     if (exists $arg_ref->{binary}) {
-       $hex_mode = ($arg_ref->{binary} eq 1) ? 0 : 1;
+        $hex_mode = ($arg_ref->{binary} eq 1) ? 0 : 1;
     }
     else {
-       $hex_mode = 1;
+        $hex_mode = 1;
     }
 
     if (exists $arg_ref->{string}) {
-       $numeric = ($arg_ref->{string} eq 1) ? 0 : 1;
+        $numeric = ($arg_ref->{string} eq 1) ? 0 : 1;
     }
     else {
-       $numeric = 1;
+        $numeric = 1;
     }
 
     # Remove comments from input file.
@@ -158,7 +158,7 @@ Verilog::Readmem - Parse Verilog $readmemh or $readmemb text file
 
 =head1 VERSION
 
-This document refers to Verilog::Readmem version 0.03.
+This document refers to Verilog::Readmem version 0.04.
 
 =head1 SYNOPSIS
 
